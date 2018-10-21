@@ -45,7 +45,7 @@ class PlacemarkActivity : AppCompatActivity(), AnkoLogger {
       btnAdd.setText(R.string.save_placemark)
     }
 
-    btnAdd.setOnClickListener() {
+    btnAdd.setOnClickListener {
       placemark.title = placemarkTitle.text.toString()
       placemark.description = description.text.toString()
       if (placemark.title.isEmpty()) {
