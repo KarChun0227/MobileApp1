@@ -23,6 +23,8 @@ class PlacemarkListActivity : AppCompatActivity(), PlacemarkListener {
     toolbarMain.title = title
     setSupportActionBar(toolbarMain)
 
+
+
     val layoutManager = LinearLayoutManager(this)
     recyclerView.layoutManager = layoutManager
     recyclerView.adapter = PlacemarkAdapter(app.placemarks.findAll(), this)
