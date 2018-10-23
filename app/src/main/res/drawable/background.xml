@@ -3,12 +3,12 @@
 
     <item android:drawable="@color/colorPrimary" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="25dp"
-        android:textColor="#6dffbf"
-        android:padding="30dp"
-        android:text="Login"/>
+    <item
+        android:left="40dp"
+        android:right="40dp">
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/ic_logo"/>
+    </item>
 
 </layer-list>

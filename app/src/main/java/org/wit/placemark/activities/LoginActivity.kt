@@ -32,11 +32,11 @@ class LoginActivity : AppCompatActivity() {
       var v_user_name = "admin"
       var v_password = "admin"
 
-      val intent = Intent(this, PlacemarkListActivity::class.java)
-
-      Toast.makeText(this@LoginActivity, user_name, Toast.LENGTH_LONG).show()
       if (user_name.toString() == v_user_name && password.toString() == v_password){
+        val intent = Intent(this, PlacemarkListActivity::class.java)
+        Toast.makeText(this@LoginActivity, user_name, Toast.LENGTH_LONG).show()
         startActivity(intent)
+        finish()
       }
       else{
         toast("Incorrect password or username")
