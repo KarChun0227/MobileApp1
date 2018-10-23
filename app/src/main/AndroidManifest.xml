@@ -20,6 +20,7 @@
 
         <activity android:name=".activities.PlacemarkActivity" />
         <activity android:name=".activities.PlacemarkListActivity"/>
+        <activity android:name=".activities.LoginActivity"/>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
@@ -28,8 +29,9 @@
             android:name=".activities.MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity
-            android:name=".activities.LoginActivity"
-            android:label="@string/title_activity_login" >
+            android:name=".activities.SplashActivity"
+            android:label="@string/Splash_label"
+            android:theme="@style/SplashTheme">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />

@@ -17,6 +17,7 @@
   <string name="menu_settingPlacemark">Setting</string>
   <string name="menu_logoutPlacemark">Logout</string>
     <string name="title_activity_login">Sign in</string>
+  <string name="Splash_label">Hillforts App</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
