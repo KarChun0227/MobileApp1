@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.activity_placemark_list.*
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivityForResult
 import org.wit.placemark.R
+import org.wit.placemark.R.id.*
 import org.wit.placemark.main.MainApp
 import org.wit.placemark.models.PlacemarkModel
 
@@ -29,6 +30,8 @@ class PlacemarkListActivity : AppCompatActivity(), PlacemarkListener {
     recyclerView.layoutManager = layoutManager
     recyclerView.adapter = PlacemarkAdapter(app.placemarks.findAll(), this)
     loadPlacemarks()
+
+
   }
 
   private fun loadPlacemarks() {
@@ -48,6 +51,7 @@ class PlacemarkListActivity : AppCompatActivity(), PlacemarkListener {
   override fun onOptionsItemSelected(item: MenuItem?): Boolean {
     when (item?.itemId) {
       R.id.item_add -> startActivityForResult<PlacemarkActivity>(0)
+      R.id.item_logout -> startActivity(Intent(this, LoginActivity::class.java))
     }
     return super.onOptionsItemSelected(item)
   }
