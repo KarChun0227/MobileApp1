@@ -11,9 +11,7 @@ import org.jetbrains.anko.info
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
 import org.wit.placemark.R
-import org.wit.placemark.helpers.readImage
-import org.wit.placemark.helpers.readImageFromPath
-import org.wit.placemark.helpers.showImagePicker
+import org.wit.placemark.helpers.*
 import org.wit.placemark.models.PlacemarkModel
 import org.wit.placemark.main.MainApp
 import org.wit.placemark.models.Location
@@ -25,7 +23,10 @@ class PlacemarkActivity : AppCompatActivity(), AnkoLogger {
   lateinit var app: MainApp
 
   var edit = false
+
   val IMAGE_REQUEST = 1
+
+  val IMAGE_REQUEST2 = 3
 
   val LOCATION_REQUEST = 2
 
@@ -67,6 +68,11 @@ class PlacemarkActivity : AppCompatActivity(), AnkoLogger {
       info("Select image")
     }
 
+    chooseImage2.setOnClickListener {
+      showImagePicker(this, IMAGE_REQUEST2)
+      info("Select image")
+    }
+
     placemarkLocation.setOnClickListener {
       val location = Location(52.245696, -7.139102, 15f)
       if (placemark.zoom != 0f) {
@@ -99,6 +105,13 @@ class PlacemarkActivity : AppCompatActivity(), AnkoLogger {
         if (data != null) {
           placemark.image = data.getData().toString()
           placemarkImage.setImageBitmap(readImage(this, resultCode, data))
+          chooseImage.setText(R.string.change_placemark_image)
+        }
+      }
+      IMAGE_REQUEST2 -> {
+        if (data != null) {
+          placemark.image2 = data.getData().toString()
+          placemarkImage2.setImageBitmap(readImage(this, resultCode, data))
           chooseImage.setText(R.string.change_placemark_image)
         }
       }
