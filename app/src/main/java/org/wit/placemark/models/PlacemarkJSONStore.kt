@@ -45,6 +45,7 @@ class PlacemarkJSONStore : PlacemarkStore, AnkoLogger {
       foundPlacemark.title = placemark.title
       foundPlacemark.description = placemark.description
       foundPlacemark.image = placemark.image
+      foundPlacemark.image2 = placemark.image2
       foundPlacemark.lat = placemark.lat
       foundPlacemark.lng = placemark.lng
       foundPlacemark.zoom = placemark.zoom
