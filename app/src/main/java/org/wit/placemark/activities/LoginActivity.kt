@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.toast
 import org.wit.placemark.R
 
@@ -41,6 +42,11 @@ class LoginActivity : AppCompatActivity() {
       else{
         toast("Incorrect password or username")
       }
+    }
+
+    btn_register.setOnClickListener {
+      val intent = Intent(this, RegisterActivity::class.java)
+      startActivity(intent)
     }
   }
 }
