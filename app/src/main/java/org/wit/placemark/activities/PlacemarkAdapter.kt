@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.card_placemark.view.*
+import org.jetbrains.anko.sdk25.coroutines.onCheckedChange
+import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.wit.placemark.R
 import org.wit.placemark.helpers.readImageFromPath
 import org.wit.placemark.models.PlacemarkModel
@@ -34,6 +36,12 @@ private val listener: PlacemarkListener) : RecyclerView.Adapter<PlacemarkAdapter
       itemView.description.text = placemark.description
       itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, placemark.image))
       itemView.setOnClickListener { listener.onPlacemarkClick(placemark) }
+      if(placemark.check.equals(false)){
+
+      }
+      itemView.checkbox.setOnClickListener {
+
+      }
     }
   }
 }

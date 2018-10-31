@@ -1,7 +1,9 @@
 package org.wit.placemark.models
 
 import android.os.Parcelable
+import android.widget.CheckBox
 import kotlinx.android.parcel.Parcelize
+import kotlinx.android.parcel.RawValue
 
 @Parcelize
 data class PlacemarkModel(var id: Long = 0,
@@ -9,6 +11,7 @@ data class PlacemarkModel(var id: Long = 0,
                           var description: String = "",
                           var image: String = "",
                           var image2: String = "",
+                          var check : Boolean = false,
                           var lat : Double = 0.0,
                           var lng: Double = 0.0,
                           var zoom: Float = 0f) : Parcelable
