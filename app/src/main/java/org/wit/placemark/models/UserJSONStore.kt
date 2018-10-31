@@ -22,30 +22,30 @@ class UserJSONStore : UserStore, AnkoLogger {
   constructor (context: Context) {
     this.context = context
     if (exists(context, JSON_FILE)) {
-      deserialize()
+      user_deserialize()
     }
   }
 
 
-  override fun findAll(): MutableList<UserModel> {
+  override fun user_findAll(): MutableList<UserModel> {
     return users
   }
 
-  override fun create(user: UserModel) {
+  override fun user_create(user: UserModel) {
     users.add(user)
-    serialize()
+    user_serialize()
   }
 
-  override fun update(user: UserModel) {
+  override fun user_update(user: UserModel) {
 
   }
 
-  private fun serialize() {
+  private fun user_serialize() {
     val jsonString = UgsonBuilder.toJson(users, UlistType)
     write(context, UJSON_FILE, jsonString)
   }
 
-  private fun deserialize() {
+  private fun user_deserialize() {
     val jsonString = read(context, UJSON_FILE)
     users = Gson().fromJson(jsonString, UlistType)
   }
