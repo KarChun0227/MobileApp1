@@ -40,7 +40,7 @@ class LoginActivity : AppCompatActivity() {
         finish()
       }
       else{
-        toast("Incorrect password or username")
+        toast("Incorrect password or  username")
       }
     }
 
