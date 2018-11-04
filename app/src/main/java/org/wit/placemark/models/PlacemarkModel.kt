@@ -1,9 +1,7 @@
 package org.wit.placemark.models
 
 import android.os.Parcelable
-import android.widget.CheckBox
 import kotlinx.android.parcel.Parcelize
-import kotlinx.android.parcel.RawValue
 
 @Parcelize
 data class PlacemarkModel(var id: Long = 0,

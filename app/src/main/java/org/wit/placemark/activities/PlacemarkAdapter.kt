@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.abc_list_menu_item_checkbox.view.*
 import kotlinx.android.synthetic.main.card_placemark.view.*
 import org.jetbrains.anko.sdk25.coroutines.onCheckedChange
 import org.jetbrains.anko.sdk25.coroutines.onClick
@@ -36,11 +37,10 @@ private val listener: PlacemarkListener) : RecyclerView.Adapter<PlacemarkAdapter
       itemView.description.text = placemark.description
       itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, placemark.image))
       itemView.setOnClickListener { listener.onPlacemarkClick(placemark) }
-      if(placemark.check.equals(false)){
+      if (placemark.check.equals(false)){
+        if(itemView.checkBox.isChecked){
 
-      }
-      itemView.checkbox.setOnClickListener {
-
+        }
       }
     }
   }
