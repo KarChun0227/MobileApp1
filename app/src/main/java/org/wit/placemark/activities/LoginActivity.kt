@@ -7,7 +7,7 @@ import android.widget.*
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.toast
 import org.wit.placemark.R
-
+import org.wit.placemark.activities.placemarklist.PlacemarkListView
 
 
 class LoginActivity : AppCompatActivity() {
@@ -34,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
       var v_password = "admin"
 
       if (user_name.toString() == v_user_name && password.toString() == v_password){
-        val intent = Intent(this, PlacemarkListActivity::class.java)
+        val intent = Intent(this, PlacemarkListView::class.java)
         Toast.makeText(this@LoginActivity, user_name, Toast.LENGTH_LONG).show()
         startActivity(intent)
         finish()

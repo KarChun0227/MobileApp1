@@ -40,6 +40,8 @@ class UserJSONStore : UserStore, AnkoLogger {
 
   }
 
+
+
   private fun user_serialize() {
     val jsonString = UgsonBuilder.toJson(users, UlistType)
     write(context, UJSON_FILE, jsonString)
