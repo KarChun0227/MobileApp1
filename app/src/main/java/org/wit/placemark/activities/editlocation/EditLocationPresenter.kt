@@ -7,17 +7,19 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import org.wit.placemark.activities.base.BasePresenter
+import org.wit.placemark.activities.base.BaseView
 import org.wit.placemark.models.Location
 
-class EditLocationPresenter(val activity: EditLocationView) {
+class EditLocationPresenter(view: BaseView) : BasePresenter(view) {
 
   var location = Location()
 
   init {
-    location = activity.intent.extras.getParcelable<Location>("location")
+    location = view.intent.extras.getParcelable<Location>("location")
   }
 
-  fun initMap(map: GoogleMap) {
+  fun doConfigureMap(map: GoogleMap) {
     val loc = LatLng(location.lat, location.lng)
     val options = MarkerOptions()
         .title("Placemark")
@@ -28,17 +30,16 @@ class EditLocationPresenter(val activity: EditLocationView) {
     map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, location.zoom))
   }
 
-  fun doUpdateLocation(lat: Double, lng: Double, zoom: Float) {
+  fun doUpdateLocation(lat: Double, lng: Double) {
     location.lat = lat
     location.lng = lng
-    location.zoom = zoom
   }
 
-  fun doOnBackPressed() {
+  fun doSave() {
     val resultIntent = Intent()
     resultIntent.putExtra("location", location)
-    activity.setResult(Activity.RESULT_OK, resultIntent)
-    activity.finish()
+    view?.setResult(0, resultIntent)
+    view?.finish()
   }
 
   fun doUpdateMarker(marker: Marker) {

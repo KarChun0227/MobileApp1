@@ -18,31 +18,63 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.placemark.PlacemarkView" />
-        <activity android:name=".activities.placemarklist.PlacemarkListView" />
-        <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.RegisterActivity" />
 
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+        <activity android:name=".activities.placemarklist.PlacemarkListView"
+            android:label="@string/title_activity_placemark_list"
+            android:launchMode="singleTop">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.LoginActivity" />
+        </activity>
+
+        <activity android:name=".activities.LoginActivity"
+            android:label="@string/title_activity_loginActvity"
+            android:launchMode="singleTop">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.SplashActivity" />
+        </activity>
+
+        <activity android:name=".activities.RegisterActivity"
+            android:label="@string/title_activity_register"
+            android:launchMode="singleTop">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.LoginActivity" />
+        </activity>
 
         <activity
             android:name=".activities.editlocation.EditLocationView"
-            android:label="@string/title_activity_maps" />
+            android:label="@string/title_activity_edit_location">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.placemark.PlacemarkView" />
+        </activity>
+
         <activity
             android:name=".activities.SplashActivity"
             android:label="@string/Splash_label"
             android:theme="@style/SplashTheme">
             <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".views.map.PlacemarkMapView"
             android:label="@string/title_activity_placemark_maps"
-            android:theme="@style/AppTheme"></activity>
+            android:launchMode="singleTop">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.placemarklist.PlacemarkListView" />
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
     </application>
 
 </manifest>

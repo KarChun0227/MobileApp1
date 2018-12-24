@@ -33,4 +33,9 @@
         completions."
     </string>
     <string name="title_activity_placemark_maps">Map of All Placemarks </string>
+    <string name="title_activity_placemark_list">Placemarks</string>
+    <string name="title_activity_placemark">Placemark</string>
+    <string name="title_activity_edit_location">Placemark</string>
+    <string name="title_activity_loginActvity">Login</string>
+    <string name="title_activity_register">Register</string>
 </resources>

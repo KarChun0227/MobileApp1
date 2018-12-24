@@ -2,16 +2,10 @@ package org.wit.placemark.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.widget.Button
-import android.widget.EditText
-import kotlinx.android.synthetic.main.activity_placemark.*
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_register.*
-import org.jetbrains.anko.info
 import org.jetbrains.anko.toast
 import org.wit.placemark.R
-import org.wit.placemark.main.MainApp
-import org.wit.placemark.models.UserJSONStore
 import org.wit.placemark.models.UserModel
 import org.wit.placemark.models.UserStore
 

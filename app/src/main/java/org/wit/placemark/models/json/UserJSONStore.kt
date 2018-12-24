@@ -1,4 +1,4 @@
-package org.wit.placemark.models
+package org.wit.placemark.models.json
 
 import android.content.Context
 import com.google.gson.Gson
@@ -8,6 +8,8 @@ import org.jetbrains.anko.AnkoLogger
 import org.wit.placemark.helpers.exists
 import org.wit.placemark.helpers.read
 import org.wit.placemark.helpers.write
+import org.wit.placemark.models.UserModel
+import org.wit.placemark.models.UserStore
 import java.util.ArrayList
 
 val UJSON_FILE = "user.json"

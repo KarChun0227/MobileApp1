@@ -12,6 +12,7 @@ import org.wit.placemark.activities.base.BaseView
 import org.wit.placemark.helpers.readImageFromPath
 import org.wit.placemark.models.PlacemarkModel
 
+
 class PlacemarkView : BaseView(), AnkoLogger {
 
   lateinit var presenter: PlacemarkPresenter
@@ -21,13 +22,17 @@ class PlacemarkView : BaseView(), AnkoLogger {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_placemark)
 
-    init(toolbarAdd)
+    super.init(toolbar, true)
 
     presenter = initPresenter (PlacemarkPresenter(this)) as PlacemarkPresenter
 
-    chooseImage.setOnClickListener { presenter.doSelectImage() }
+    mapView.onCreate(savedInstanceState)
+    mapView.getMapAsync {
+      presenter.doConfigureMap(it)
+      it.setOnMapClickListener { presenter.doSetLocation() }
+    }
 
-    placemarkLocation.setOnClickListener { presenter.doSetLocation() }
+    chooseImage.setOnClickListener { presenter.doSelectImage() }
   }
 
   override fun showPlacemark(placemark: PlacemarkModel) {
@@ -37,6 +42,8 @@ class PlacemarkView : BaseView(), AnkoLogger {
     if (placemark.image != null) {
       chooseImage.setText(R.string.change_placemark_image)
     }
+    lat.setText("%.6f".format(placemark.location.lat))
+    lng.setText("%.6f".format(placemark.location.lng))
   }
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -70,4 +77,31 @@ class PlacemarkView : BaseView(), AnkoLogger {
   override fun onBackPressed() {
     presenter.doCancel()
   }
+
+  override fun onDestroy() {
+    super.onDestroy()
+    mapView.onDestroy()
+  }
+
+  override fun onLowMemory() {
+    super.onLowMemory()
+    mapView.onLowMemory()
+  }
+
+  override fun onPause() {
+    super.onPause()
+    mapView.onPause()
+  }
+
+  override fun onResume() {
+    super.onResume()
+    mapView.onResume()
+    presenter.doResartLocationUpdates()
+  }
+
+  override fun onSaveInstanceState(outState: Bundle?) {
+    super.onSaveInstanceState(outState)
+    mapView.onSaveInstanceState(outState)
+  }
 }
+

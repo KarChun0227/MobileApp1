@@ -3,8 +3,8 @@ package org.wit.placemark.activities.base
 import android.content.Intent
 
 import android.os.Parcelable
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import org.jetbrains.anko.AnkoLogger
 import org.wit.placemark.activities.editlocation.EditLocationView
 import org.wit.placemark.activities.placemark.PlacemarkView
@@ -43,9 +43,10 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
     return presenter
   }
 
-  fun init(toolbar: Toolbar) {
+  fun init(toolbar: Toolbar, upEnabled: Boolean) {
     toolbar.title = title
     setSupportActionBar(toolbar)
+    supportActionBar?.setDisplayHomeAsUpEnabled(upEnabled)
   }
 
   override fun onDestroy() {
