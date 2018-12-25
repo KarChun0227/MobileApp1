@@ -1,6 +1,7 @@
 package org.wit.placemark.activities.login
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import kotlinx.android.synthetic.main.activity_login.*
@@ -16,6 +17,8 @@ class LoginView : BaseView() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_login)
+
+    progressBar.visibility = View.GONE
 
     var et_user_name = findViewById(R.id.et_user_name) as EditText
     var et_password = findViewById(R.id.et_password) as EditText
@@ -41,18 +44,22 @@ class LoginView : BaseView() {
     }
 
     btn_submit.setOnClickListener {
-      var v_user_name = "admin"
-      var v_password = "admin"
-
       val email = et_user_name.text.toString()
       val password = et_password.text.toString()
-      if (email == v_user_name && password == v_password) {
-
-        presenter.doLogin(email,password)
-      }
-      else {
+      if (email == "" && password == "") {
         toast("Please provide email + password")
       }
+      else {
+        presenter.doLogin(email,password)
+      }
     }
+  }
+
+  override fun showProgress() {
+    progressBar.visibility = View.VISIBLE
+  }
+
+  override fun hideProgress() {
+    progressBar.visibility = View.GONE
   }
 }

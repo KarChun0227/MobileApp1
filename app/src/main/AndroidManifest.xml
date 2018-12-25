@@ -22,17 +22,11 @@
         <activity android:name=".activities.placemarklist.PlacemarkListView"
             android:label="@string/title_activity_placemark_list"
             android:launchMode="singleTop">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.LoginActivity" />
         </activity>
 
         <activity android:name=".activities.LoginActivity"
             android:label="@string/title_activity_loginActvity"
             android:launchMode="singleTop">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.SplashActivity" />
         </activity>
 
         <activity android:name=".activities.RegisterActivity"
@@ -40,7 +34,7 @@
             android:launchMode="singleTop">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.LoginActivity" />
+                android:value=".activities.login.LoginView" />
         </activity>
 
         <activity

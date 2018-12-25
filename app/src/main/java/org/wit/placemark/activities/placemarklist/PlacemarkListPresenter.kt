@@ -1,5 +1,6 @@
 package org.wit.placemark.activities.placemarklist
 
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
 import org.wit.placemark.activities.base.BasePresenter
@@ -26,5 +27,11 @@ class PlacemarkListPresenter(view: BaseView) : BasePresenter(view) {
     async(UI) {
       view?.showPlacemarks(app.placemarks.findAll())
     }
+  }
+
+  fun doLogout() {
+    FirebaseAuth.getInstance().signOut()
+    app.placemarks.clear()
+    view?.navigateTo(VIEW.LOGIN)
   }
 }

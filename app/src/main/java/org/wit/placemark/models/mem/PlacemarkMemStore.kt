@@ -25,15 +25,19 @@ abstract class PlacemarkMemStore : PlacemarkStore, AnkoLogger {
     logAll()
   }
 
-  suspend override fun update(placemark: PlacemarkModel) {
+  override suspend fun update(placemark: PlacemarkModel) {
     var foundPlacemark: PlacemarkModel? = placemarks.find { p -> p.id == placemark.id }
     if (foundPlacemark != null) {
       foundPlacemark.title = placemark.title
       foundPlacemark.description = placemark.description
       foundPlacemark.image = placemark.image
       foundPlacemark.location = placemark.location
-      logAll();
+      logAll()
     }
+  }
+
+  override fun clear() {
+    placemarks.clear()
   }
 
   fun logAll() {
