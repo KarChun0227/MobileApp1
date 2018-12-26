@@ -36,6 +36,7 @@ class PlacemarkFireStore(val context: Context) : PlacemarkStore, AnkoLogger {
       foundPlacemark.description = placemark.description
       foundPlacemark.image = placemark.image
       foundPlacemark.location = placemark.location
+      foundPlacemark.rating = placemark.rating
     }
 
     db.child("users").child(userId).child("placemarks").child(placemark.fbId).setValue(placemark)

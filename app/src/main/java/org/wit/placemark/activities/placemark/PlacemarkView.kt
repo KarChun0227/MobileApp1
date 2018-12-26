@@ -39,18 +39,20 @@ class PlacemarkView : BaseView(), AnkoLogger {
   override fun showPlacemark(placemark: PlacemarkModel) {
     placemarkTitle.setText(placemark.title)
     description.setText(placemark.description)
-    Glide.with(this).load(placemark.image).into(placemarkImage);
+    Glide.with(this).load(placemark.image).into(placemarkImage)
     if (placemark.image != null) {
       chooseImage.setText(R.string.change_placemark_image)
     }
     lat.setText("%.6f".format(placemark.location.lat))
     lng.setText("%.6f".format(placemark.location.lng))
+    ratingBar.setRating(placemark.rating)
   }
 
-  override fun onCreateOptionsMenu(menu: Menu): Boolean {
-    menuInflater.inflate(R.menu.menu_placemark, menu)
-    return super.onCreateOptionsMenu(menu)
-  }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+      menuInflater.inflate(R.menu.menu_placemark, menu)
+      return super.onCreateOptionsMenu(menu)
+    }
+
 
   override fun onOptionsItemSelected(item: MenuItem?): Boolean {
     when (item?.itemId) {
@@ -61,7 +63,7 @@ class PlacemarkView : BaseView(), AnkoLogger {
         if (placemarkTitle.text.toString().isEmpty()) {
           toast(R.string.enter_placemark_title)
         } else {
-          presenter.doAddOrSave(placemarkTitle.text.toString(), description.text.toString())
+          presenter.doAddOrSave(placemarkTitle.text.toString(), description.text.toString(), ratingBar.getRating())
         }
       }
     }

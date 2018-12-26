@@ -2,6 +2,7 @@ package org.wit.placemark.activities.placemark
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.widget.RatingBar
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationResult
@@ -89,9 +90,10 @@ class PlacemarkPresenter(view: BaseView) : BasePresenter(view) {
   }
 
 
-  fun doAddOrSave(title: String, description: String) {
+  fun doAddOrSave(title: String, description: String, rate: Float) {
     placemark.title = title
     placemark.description = description
+    placemark.rating = rate
     async(UI) {
       if (edit) {
         app.placemarks.update(placemark)
@@ -100,6 +102,10 @@ class PlacemarkPresenter(view: BaseView) : BasePresenter(view) {
       }
       view?.finish()
     }
+  }
+
+  fun doRatingg(){
+
   }
 
   fun doCancel() {
