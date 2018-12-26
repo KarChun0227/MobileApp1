@@ -14,6 +14,7 @@ data class PlacemarkModel(@PrimaryKey(autoGenerate = true) var id: Long = 0,
                           var description: String = "",
                           var image: String = "",
                           var rating: Float = 0F,
+                          var like: Boolean = false,
                           @Embedded var location : Location = Location()): Parcelable
 
 @Parcelize

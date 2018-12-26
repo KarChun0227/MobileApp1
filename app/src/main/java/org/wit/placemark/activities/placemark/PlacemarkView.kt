@@ -19,6 +19,8 @@ class PlacemarkView : BaseView(), AnkoLogger {
   lateinit var presenter: PlacemarkPresenter
   var placemark = PlacemarkModel()
 
+  var check = false
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_placemark)
@@ -55,6 +57,7 @@ class PlacemarkView : BaseView(), AnkoLogger {
 
 
   override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    checkbox()
     when (item?.itemId) {
       R.id.item_delete -> {
         presenter.doDelete()
@@ -63,12 +66,19 @@ class PlacemarkView : BaseView(), AnkoLogger {
         if (placemarkTitle.text.toString().isEmpty()) {
           toast(R.string.enter_placemark_title)
         } else {
-          presenter.doAddOrSave(placemarkTitle.text.toString(), description.text.toString(), ratingBar.getRating())
+          presenter.doAddOrSave(placemarkTitle.text.toString(), description.text.toString(), ratingBar.getRating(), check)
         }
       }
     }
     return super.onOptionsItemSelected(item)
   }
+
+  fun checkbox(){
+    if (likeIcon.isChecked()){
+      check = true
+    }
+  }
+
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     super.onActivityResult(requestCode, resultCode, data)

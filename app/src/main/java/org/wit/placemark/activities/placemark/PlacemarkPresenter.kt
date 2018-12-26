@@ -90,10 +90,11 @@ class PlacemarkPresenter(view: BaseView) : BasePresenter(view) {
   }
 
 
-  fun doAddOrSave(title: String, description: String, rate: Float) {
+  fun doAddOrSave(title: String, description: String, rate: Float, CheckBox: Boolean) {
     placemark.title = title
     placemark.description = description
     placemark.rating = rate
+    placemark.like = CheckBox
     async(UI) {
       if (edit) {
         app.placemarks.update(placemark)

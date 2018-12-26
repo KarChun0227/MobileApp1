@@ -34,6 +34,11 @@ private val listener: PlacemarkListener) : androidx.recyclerview.widget.Recycler
       itemView.placemarkTitle.text = placemark.title
       itemView.description.text = placemark.description
       Glide.with(itemView.context).load(placemark.image).into(itemView.imageIcon)
+      if (placemark.like.equals(true)){
+        itemView.likeIcon.setChecked(true)
+      }else{
+        itemView.likeIcon.setChecked(false)
+      }
       itemView.setOnClickListener { listener.onPlacemarkClick(placemark) }
     }
   }
