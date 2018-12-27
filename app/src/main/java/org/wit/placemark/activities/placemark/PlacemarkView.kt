@@ -48,6 +48,7 @@ class PlacemarkView : BaseView(), AnkoLogger {
     lat.setText("%.6f".format(placemark.location.lat))
     lng.setText("%.6f".format(placemark.location.lng))
     ratingBar.setRating(placemark.rating)
+    if(placemark.like == true){likeIcon.setChecked(true)}
   }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
